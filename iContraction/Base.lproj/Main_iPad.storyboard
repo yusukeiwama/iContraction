@@ -16,21 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ND-o8-jdm">
-                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ND-o8-jdm">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="yvO-i4-5xS" appends="YES" id="CfC-3a-8ng"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="2ND-o8-jdm" secondAttribute="trailing" id="1og-Iq-pJs"/>
-                            <constraint firstItem="2ND-o8-jdm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="51s-fI-Rmg"/>
-                            <constraint firstAttribute="bottom" secondItem="2ND-o8-jdm" secondAttribute="bottom" id="Kxa-wW-FCh"/>
-                            <constraint firstItem="2ND-o8-jdm" firstAttribute="top" secondItem="5co-ak-AlR" secondAttribute="bottom" id="NKd-zp-D3p"/>
+                            <constraint firstAttribute="trailing" secondItem="2ND-o8-jdm" secondAttribute="trailing" id="A9l-1n-jzv"/>
+                            <constraint firstItem="2ND-o8-jdm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AJc-Tn-ZRw"/>
+                            <constraint firstItem="2ND-o8-jdm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="emO-mK-4hz"/>
+                            <constraint firstItem="E6z-1h-2vC" firstAttribute="top" secondItem="2ND-o8-jdm" secondAttribute="bottom" id="xHY-Ke-304"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="2ND-o8-jdm" id="06L-it-hLY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yvO-i4-5xS">
+                    <connections>
+                        <action selector="tapAction:" destination="BYZ-38-t0r" id="so0-Ap-OcV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>

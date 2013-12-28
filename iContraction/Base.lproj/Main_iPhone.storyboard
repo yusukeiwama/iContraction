@@ -16,21 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EA5-4C-92r">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EA5-4C-92r">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mfS-qw-zXb" appends="YES" id="FSg-8S-z5N"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EA5-4C-92r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="1Yh-Ok-xht"/>
-                            <constraint firstAttribute="bottom" secondItem="EA5-4C-92r" secondAttribute="bottom" id="Oyh-54-4tV"/>
-                            <constraint firstItem="EA5-4C-92r" firstAttribute="top" secondItem="RTA-fX-x9a" secondAttribute="bottom" id="dbl-wY-wnL"/>
-                            <constraint firstAttribute="trailing" secondItem="EA5-4C-92r" secondAttribute="trailing" id="r2C-dn-ZhJ"/>
+                            <constraint firstItem="EA5-4C-92r" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="MRm-Wv-SMZ"/>
+                            <constraint firstItem="EA5-4C-92r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="lR8-i7-mVk"/>
+                            <constraint firstItem="Tyr-Ar-kXQ" firstAttribute="top" secondItem="EA5-4C-92r" secondAttribute="bottom" id="nfv-cf-rew"/>
+                            <constraint firstAttribute="trailing" secondItem="EA5-4C-92r" secondAttribute="trailing" id="yqT-5t-d1J"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="EA5-4C-92r" id="i1P-VF-28E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mfS-qw-zXb">
+                    <connections>
+                        <action selector="tapAction:" destination="vXZ-lx-hvc" id="Cpd-yz-sxz"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
