@@ -24,16 +24,59 @@
                                     <outletCollection property="gestureRecognizers" destination="mfS-qw-zXb" appends="YES" id="FSg-8S-z5N"/>
                                 </connections>
                             </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ms3-5L-kWf">
+                                <rect key="frame" x="18" y="515" width="284" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="alphaValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Qlb-Ro-e5W"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mXL-a2-wb2">
+                                <rect key="frame" x="18" y="474" width="284" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="alphaValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="dnZ-rn-gAg"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="alpha: (radius, angle) = default value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="39p-xO-kFe">
+                                <rect key="frame" x="20" y="445" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraction Mapping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNe-2l-e9e">
+                                <rect key="frame" x="20" y="20" width="280" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hNe-2l-e9e" secondAttribute="trailing" constant="20" symbolic="YES" id="1AU-9S-Tih"/>
+                            <constraint firstItem="hNe-2l-e9e" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" id="1nb-e9-zNC"/>
+                            <constraint firstAttribute="trailing" secondItem="ms3-5L-kWf" secondAttribute="trailing" constant="20" symbolic="YES" id="CXt-fv-NUi"/>
+                            <constraint firstItem="ms3-5L-kWf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="E2m-lM-yMu"/>
+                            <constraint firstItem="hNe-2l-e9e" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="EC9-HB-VCv"/>
+                            <constraint firstItem="Tyr-Ar-kXQ" firstAttribute="top" secondItem="ms3-5L-kWf" secondAttribute="bottom" constant="20" id="EbT-gD-Y66"/>
                             <constraint firstItem="EA5-4C-92r" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="MRm-Wv-SMZ"/>
+                            <constraint firstItem="mXL-a2-wb2" firstAttribute="top" secondItem="39p-xO-kFe" secondAttribute="bottom" constant="8" symbolic="YES" id="R2d-vF-LBY"/>
+                            <constraint firstItem="39p-xO-kFe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="WKB-rv-MFd"/>
+                            <constraint firstAttribute="trailing" secondItem="mXL-a2-wb2" secondAttribute="trailing" constant="20" symbolic="YES" id="aSf-cE-Qvt"/>
+                            <constraint firstItem="mXL-a2-wb2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="d4Q-FZ-yjy"/>
                             <constraint firstItem="EA5-4C-92r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="lR8-i7-mVk"/>
                             <constraint firstItem="Tyr-Ar-kXQ" firstAttribute="top" secondItem="EA5-4C-92r" secondAttribute="bottom" id="nfv-cf-rew"/>
+                            <constraint firstAttribute="trailing" secondItem="39p-xO-kFe" secondAttribute="trailing" constant="20" symbolic="YES" id="o5Y-rf-ImJ"/>
+                            <constraint firstItem="ms3-5L-kWf" firstAttribute="top" secondItem="mXL-a2-wb2" secondAttribute="bottom" constant="8" symbolic="YES" id="vq9-Ph-hdG"/>
                             <constraint firstAttribute="trailing" secondItem="EA5-4C-92r" secondAttribute="trailing" id="yqT-5t-d1J"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alphaAngleSlider" destination="ms3-5L-kWf" id="405-5a-nXH"/>
+                        <outlet property="alphaLabel" destination="39p-xO-kFe" id="4Qr-OQ-ttF"/>
+                        <outlet property="alphaRadiusSlider" destination="mXL-a2-wb2" id="0nZ-j9-RiQ"/>
                         <outlet property="imageView" destination="EA5-4C-92r" id="i1P-VF-28E"/>
                     </connections>
                 </viewController>
