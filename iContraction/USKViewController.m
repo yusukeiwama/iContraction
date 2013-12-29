@@ -19,12 +19,14 @@
 - (IBAction)tapAction:(id)sender;
 - (IBAction)alphaValueChanged:(id)sender;
 
-
 @end
 
 @implementation USKViewController {
 	int _iteration;
+	int _maxIteration;
 	_Complex double _alpha;
+	double _radius;
+	double _angle;
 	_Complex double *_currentMapping;
 	int _n; // initial number of points
 	
@@ -43,22 +45,24 @@
 {
     [super viewDidLoad];
 	
-	_alpha = 0.5 + sqrt(3) / 6.0 * I;
-	
+	_maxIteration = 12;
+	_alpha = 0.5 + sqrt(3.0) / 6.0 * I;
+	_alphaRadiusSlider.value = _radius = cabs(_alpha);
+	_alphaAngleSlider.value = _angle = atan((sqrt(3.0) / 6.0) / 0.5);
 	_n = 3;
 	
-	_scale = self.view.frame.size.width;
-//	_scale = self.view.frame.size.width / 3.0;
+	_scale = self.view.frame.size.width * 5 / 6;
 	_inv = -1;
-	_xOffset = 0.0;
-//	_xOffset = self.view.frame.size.width / 3.0;
+	_xOffset = self.view.frame.size.width / 12.0;
 	_yOffset = self.view.frame.size.height / 2.0;
-	
+		
 	[self reset];
 }
 
 - (void)reset
 {
+	_iteration = 0;
+	
 	_Complex double *z0 = calloc(_n, sizeof(_Complex double));
 	z0[0] = 0.0 + 0.0 * I;
 	z0[1] = 1.0 + 0.0 * I;
@@ -67,8 +71,7 @@
 	printf("z0[1] = %f + %fi\n", creal(z0[1]), cimag(z0[1]));
 	printf("z0[2] = %f + %fi\n", creal(z0[2]), cimag(z0[2]));
 	
-	_iteration = 0;
-	
+	// Draw initial triangle.
 	UIGraphicsBeginImageContextWithOptions((self.imageView.frame.size), YES, 0);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSetStrokeColorWithColor(context, [[UIColor colorWithWhite:1.0 alpha:1.0] CGColor]);
@@ -85,11 +88,13 @@
 	UIGraphicsEndImageContext();
 	
 	_currentMapping = z0;
+	
+	[self updateAlphaLabel];
 }
 
 - (void)drawContraction:(_Complex double *)z
 {
-	if (_iteration > 13) {
+	if (_iteration > 12) {
 		free(z);
 		[self reset];
 		return;
@@ -100,8 +105,8 @@
 		for (int j = 0;  j < _n; j++) {
 			zn[_n * i + j] = _alpha * conj(z[_n * i + j]);
 //			zn[_n * i + j + _n * (int)(pow(2, _iteration))] = conj(_alpha) * conj(z[_n * i + j]) + _alpha;
-			zn[_n * i + j + _n * (int)(pow(2, _iteration))] = cabs(_alpha) * cabs(_alpha) + (1 - cabs(_alpha) * cabs(_alpha)) * conj(z[_n * i + j]);
-//			zn[_n * i + j + _n * (int)(pow(2, _iteration))] = (z[_n * i + j] + _alpha) / (1 + _alpha);
+//			zn[_n * i + j + _n * (int)(pow(2, _iteration))] = cabs(_alpha) * cabs(_alpha) + (1 - cabs(_alpha) * cabs(_alpha)) * conj(z[_n * i + j]);
+			zn[_n * i + j + _n * (int)(pow(2, _iteration))] = (z[_n * i + j] + _alpha) / (1 + _alpha);
 		}
 	}
 	
@@ -129,6 +134,11 @@
 	_iteration++;
 }
 
+- (void)updateAlphaLabel
+{
+	self.alphaLabel.text = [NSString stringWithFormat:@"alpha: (radius, angle) = (%.2f, %.2f), (x, y) = %+1.3f %+1.3f", _radius, _angle, creal(_alpha), cimag(_alpha)];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -141,9 +151,11 @@
 }
 
 - (IBAction)alphaValueChanged:(id)sender {
-	_alpha = self.alphaRadiusSlider.value * cos(self.alphaRadiusSlider.value) + self.alphaRadiusSlider.value * sin(self.alphaAngleSlider.value) * I;
-	self.alphaLabel.text = [NSString stringWithFormat:@"alpha: (radius, angle) = (%.2f, %.2f)", self.alphaRadiusSlider.value, self.alphaAngleSlider.value];
-	
-	
+	_radius = self.alphaRadiusSlider.value;
+	_angle = self.alphaAngleSlider.value;
+	_alpha = _radius * cos(_angle) + _radius * sin(_angle) * I;
+	[self updateAlphaLabel];
 }
+
+
 @end

@@ -24,7 +24,7 @@
                                     <outletCollection property="gestureRecognizers" destination="yvO-i4-5xS" appends="YES" id="CfC-3a-8ng"/>
                                 </connections>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="6.2831799999999998" translatesAutoresizingMaskIntoConstraints="NO" id="368-sa-Aj6">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.0449999999999999" minValue="-3.1415926535000001" maxValue="3.1415926535000001" translatesAutoresizingMaskIntoConstraints="NO" id="368-sa-Aj6">
                                 <rect key="frame" x="18" y="971" width="732" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
